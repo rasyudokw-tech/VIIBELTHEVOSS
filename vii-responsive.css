@@ -120,8 +120,7 @@ h3{
 .wakil-ketua-kelas,
 .bendahara,
 .sekretaris,
-.keamanan,
-.pencipta {
+.keamanan {
     width: 260px;
     max-width: 90vw;
     padding: 20px;
@@ -130,6 +129,19 @@ h3{
     border-radius: 16px;
     text-align: center;
     /* margin-left / margin-top manual dihapus semua */
+}
+
+/* .pencipta berdiri sendiri (gak dibungkus flex container),
+   jadi butuh margin: auto sendiri biar ke-center */
+.pencipta {
+    width: 260px;
+    max-width: 90vw;
+    padding: 20px;
+    background: #1f2937;
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .wali-kelas img,
