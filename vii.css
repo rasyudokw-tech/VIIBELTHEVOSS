@@ -248,24 +248,6 @@ h3{
     margin: 0;
 }
 
-@media (max-width: 600px) {
-    .jadwal-container {
-        grid-template-columns: 1fr;
-    }
-
-    .jadwal {
-        padding: 40px 15px;
-    }
-
-    .jadwal-card {
-        padding: 20px;
-    }
-
-    .jadwal-item {
-        font-size: 14px;
-    }
-}
-
 .Prestasi img{
 width: 600px ;
 }
@@ -285,4 +267,34 @@ width: 600px ;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.one img{
+   width: 400px;
+    height: auto;
+    margin-left: -500px;
+    margin-top: 20px;
+     transform: translateY(15px)    ;
+}
+
+.two img{
+width: 400px;
+    height: auto;
+    margin-left: 500px; 
+    margin-top: -500px;
+}
+
+.three  img{
+   width: 400px;
+    height: auto;
+    margin-left: -500px;
+    margin-top: 20px;
+     transform: translateY(15px)    ;
+}
+
+.four img{
+width: 400px;
+    height: auto;
+    margin-left: 500px; 
+    margin-top: -500px;
 }
