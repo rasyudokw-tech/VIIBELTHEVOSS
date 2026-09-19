@@ -1,0 +1,321 @@
+body{
+    background:#050816;
+    font-family: Arial;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-size: 50px;
+    margin-top: 70px;
+    color: #ff9101;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size:28px;
+    font-weight:bold;
+    color: #ff9101;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 50%;
+    transform: translateY(7px);
+}
+
+/* Nav: dulu pakai position absolute + translateX, sekarang flex biasa
+   biar otomatis re-flow di layar sempit */
+.atas{
+    display:flex;
+    list-style:none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.atas a{
+    text-decoration:none;
+    color:#ff9101;
+    font-weight:500;
+    position: relative;
+}
+
+.atas a:hover{
+    color:#ff9101;
+}
+
+.atas a::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #ff9101;
+    transition: 0.3s;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+}
+.atas a:hover::after{
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+    width: 225px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow:0 0 25px rgb(255, 136, 0);
+}
+
+p{
+    font-size: 30px;
+    color: #ff9101;
+}
+
+h2{
+    color: #ff9101;
+    font-size: 20px;
+}
+
+h3{
+    color: #ff9101;
+}
+
+/* ===== STRUKTUR KELAS =====
+   Sebelumnya tiap orang punya margin-left/margin-top fixed dalam
+   pixel gede (200px, 535px, 870px, -330px, dst) buat naruh posisi
+   di layar lebar. Itu sebabnya di HP posisinya kelempar keluar layar.
+   Sekarang dibungkus 1 container flex-wrap, biar otomatis nyusun
+   ulang sesuai lebar layar tanpa perlu posisi manual.
+
+   PENTING: di HTML, bungkus semua elemen struktur kelas
+   (.wali-kelas, .ketua-kelas, .wakil-ketua-kelas, .bendahara,
+   .sekretaris, .keamanan) di dalam satu <div class="struktur-container">
+*/
+.struktur-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.wali-kelas,
+.ketua-kelas,
+.wakil-ketua-kelas,
+.bendahara,
+.sekretaris,
+.keamanan,
+.pencipta {
+    width: 260px;
+    max-width: 90vw;
+    padding: 20px;
+    background: #1f2937;
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    /* margin-left / margin-top manual dihapus semua */
+}
+
+.wali-kelas img,
+.ketua-kelas img,
+.wakil-ketua-kelas img,
+.bendahara img,
+.sekretaris img,
+.keamanan img,
+.pencipta img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Kalau .pencipta ada di section terpisah (bukan dalam struktur-container),
+   bungkus dia sendiri biar tetap kecentering */
+.pencipta-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ===== JADWAL ===== */
+.jadwal {
+    padding: 60px 20px;
+    background:#050816;
+}
+
+.jadwal h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.jadwal-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.jadwal-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.jadwal-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.jadwal-item {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.jadwal-item span {
+    min-width: 95px;
+    font-weight: bold;
+}
+
+.jadwal-item p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* ===== PRESTASI =====
+   Dulu width: 600px fixed, jadi kelebaran & harus scroll horizontal
+   di HP. Sekarang responsive pakai grid + max-width. */
+.prestasi-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.Prestasi img{
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* ===== SECTION .one .two .three .four =====
+   Sebelumnya pakai margin-left: -500px / 500px dan
+   margin-top: -500px untuk nyusun gambar berdampingan secara manual.
+   Ini SANGAT rawan rusak di ukuran layar apapun selain yang dites.
+   Solusi: bungkus .one .two .three .four dalam 1 container flex.
+
+   Di HTML, bungkus jadi:
+   <div class="galeri-container">
+     <div class="one"><img ...></div>
+     <div class="two"><img ...></div>
+     <div class="three"><img ...></div>
+     <div class="four"><img ...></div>
+   </div>
+*/
+.galeri-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.one img,
+.two img,
+.three img,
+.four img,
+.five img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    /* semua margin-left/margin-top manual dihapus */
+}
+
+/* Banner judul "prestasi.jpg" di paling atas section prestasi,
+   biar gak sebesar galeri foto di bawahnya */
+.prestasi > img {
+    max-width: 500px;
+    width: 90%;
+}
+
+/* ================================
+   MEDIA QUERY — TAMPILAN DI HP
+   ================================ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .atas {
+        gap: 20px;
+        font-size: 14px;
+    }
+
+    .jadwal-container {
+        grid-template-columns: 1fr; /* jadwal jadi 1 kolom di HP */
+    }
+
+    .wali-kelas,
+    .ketua-kelas,
+    .wakil-ketua-kelas,
+    .bendahara,
+    .sekretaris,
+    .keamanan,
+    .pencipta {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .jadwal-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .jadwal-item span {
+        min-width: unset;
+    }
+}
